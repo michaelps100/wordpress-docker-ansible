@@ -8,7 +8,13 @@
          image: mysql:5.7
          env:
            MYSQL_ROOT_PASSWORD: P@ssw0rd
+           #           MYSQL_USER: michael
+           #           MYSQL_PASSWORD: P@ssw0rd
      - name: "Executa o container WordPress"
        docker_container:
          name: wordpress-site01
          image: wordpress
+         links:
+            - "banco-site01:mysql"
+         ports:
+            - "80:80"
